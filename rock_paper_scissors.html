@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <title>title</title>
     <script>
+      function computerSelection() {
+        let choice = Math.floor(Math.random() * 3);
+        if (choice == 0 ) {
+          return "rock"
+        }
+        else if (choice == 1){
+          return "paper"
+        }
+        else {
+          return "scissors"
+        }
+      }
 
+      function playerSelection() {
+        let playerChoice = prompt('Pick your play!: ');
+        playerChoice.toLowerCase();
+        if (playerChoice != "rock" && playerChoice != "paper" && playerChoice!= "scissors") {
+          playerChoice = prompt("That wasn't a valid choice, please pick rock, paper, or scissors: ");
+        }
+        else {
+          return playerChoice;
+        }
+      }
+      
+      function playRound(playerSelection, computerSelection) {
+        let yourMove = playerSelection();
+        let computerMove = computerSelection();
 
+        if (yourMove == computerMove) {
+          return "Draw"
+          console.log("Draw");
+        }
+        else if (yourMove == "rock" && computerMove == "paper" || yourMove == "paper" && computerMove == "scissors" || yourMove == "scissors" && computerMove == "rock") {
+          return "You Lose!";
+          console.log("you lose!");
+        }
+        else {
+          return "You Win!"
+          console.log("You win!");
+        }
+      }
+
+      console.log(playRound(playerSelection, computerSelection));
     </script>
   </head>
   <body>
