@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>title</title>
     <script>
+      //No reason to really use floor, as you can use .33 or .66, just personal preferance
       function computerSelection() {
         let choice = Math.floor(Math.random() * 3);
         if (choice == 0 ) {
@@ -17,6 +18,7 @@
         }
       }
 
+      //The reason this makes the play lowercase is so that they can type it in any form they want.
       function playerSelection() {
         let playerChoice = prompt('Pick your play!: ');
         playerChoice.toLowerCase();
@@ -46,7 +48,23 @@
         }
       }
 
-      console.log(playRound(playerSelection, computerSelection));
+      // Test statement commented out to ensure no logic issues above: console.log(playRound(playerSelection, computerSelection));
+      function game(){
+        let computerScore = 0;
+        let playerScore = 0;
+        for (i=0; i<5; i++) {
+          if (playRound(playerSelection, computerSelection) == 'you lose') {
+            computerScore +=1;
+          }
+          else {
+            playerScore +=1;
+          }
+        }
+        console.log(computerScore);
+        console.log(playerScore);
+      }
+      //May have to change the counter implementation depending on the future states of the game but suffices as a console game for now. 
+      game();
     </script>
   </head>
   <body>
